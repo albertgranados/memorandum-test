@@ -3,6 +3,7 @@ import ItemBox from '../components/ItemBox'
 import TitleBar from '../components/TitleBar'
 import { ProgramType } from '../types/StreamingInterface'
 import StreamingContext from '../context/StreamingContext'
+import Grid from '../components/Grid'
 
 export default function HomeScreen() {
   return (
@@ -31,14 +32,15 @@ function HomeScreenContent() {
 
 function StreamingContent() {
   return (
-    <div>
+    <Grid>
       {Object.values(ProgramType).map((program) => (
         <div key={program}>
-          <ul className="grid w-full max-w-[1480px] gap-2 p-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <ItemBox title={program} image={program} />
-          </ul>
+          <ItemBox
+            title={program}
+            link={`/${program === ProgramType.Movie ? 'movies' : 'series'}`}
+          />
         </div>
       ))}
-    </div>
+    </Grid>
   )
 }

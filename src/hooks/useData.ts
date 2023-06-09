@@ -49,7 +49,7 @@ export default function useData(source: Streaming) {
       setSeries(getSeries(source))
       setTotal(source.total)
     } catch (error) {
-      setError('Error while loading data')
+      setError('Oops, something went wrong...')
     } finally {
       setIsLoading(false)
     }
